@@ -5,7 +5,6 @@
 function sorted_matrix = spmdBubbleSort(matrix)
     p = parpool('local',4);
     N = size(matrix, 2); %number of columns
-    M = size(matrix, 1); %number of rows
     numW = p.NumWorkers;
     
     spmd

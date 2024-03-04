@@ -2,7 +2,7 @@
 % Program divides columns equally among threads based on the labindex
 % of the worker thread.
 
-function spmdBubbleSort(matrix)
+function sorted_matrix = spmdBubbleSort(matrix)
     p = parpool('local',4);
     N = size(matrix, 2); %number of columns
     M = size(matrix, 1); %number of rows
@@ -36,6 +36,7 @@ function spmdBubbleSort(matrix)
                  end
              end
           end
+          sorted_matrix = gather(m_sliced);
 %           disp(m_sliced);
     end
     p.delete;
